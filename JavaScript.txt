@@ -1,0 +1,52 @@
+function saveData(){
+    let names, email, age, phone, adhaar, address, date;
+    names = document.getElementById('name').value
+    email = document.getElementById('email').value
+    age = document.getElementById('age').value
+    phone = document.getElementById('phone').value
+    adhaar = document.getElementById('adhaar').value
+    address = document.getElementById('address').value
+    date = document.getElementById('date').value
+    
+    let users_record = new Array();
+    users_record = JSON.parse(localStorage.getItem('user'))?JSON.parse(localStorage.getItem('user')):[]
+    if(users_record.some((v)=>{return v.email==email && names==names}))
+    {
+      alert("duplicate data");
+    } else{
+        users_record.push({
+            'name':names,
+            'email':email,
+            'age':age,
+            'phone':phone,
+            'adhaar':adhaar,
+            'address':address,
+            'date':date
+        })
+    }
+    localStorage.setItem('user',JSON.stringify(users_record));
+    }
+    showData();
+    function showData(){
+        let users_record = new Array();
+        users_record = JSON.parse(localStorage.getItem('user'))?JSON.parse(localStorage.getItem('user')):[]
+        
+        if(users_record){
+            for (let i = 0; i < users_record.length; i++) {
+                let addDiv = document.createElement('div')
+                addDiv.className = 'row'
+                addDiv.innerHTML=`<div class="row" style="display: flex; justify: content;">
+                <div style="margin-left: 50px;" >`+users_record[i].name+`</div>
+                <div style="margin-left: 50px;" >`+users_record[i].email+`</div>
+                <div style="margin-left: 50px;" >`+users_record[i].age+`</div>
+                <div style="margin-left: 50px;" >`+users_record[i].phone+`</div>
+                <div style="margin-left: 50px;" >`+users_record[i].adhaar+`</div>
+                <div style="margin-left: 50px;" >`+users_record[i].address+`</div>
+                <div style="margin-left: 50px;" >`+users_record[i].date+`</div>
+                </div>`
+       mainDiv = document.getElementById('showUser').appendChild(addDiv);
+            }
+        }
+       
+    }
+    

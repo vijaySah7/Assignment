@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetTantra Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div>
+        <h2 style="color: #106adfbd; margin-left: 30px;">Nettantra Technologies</h2>
+    </div>
+
+    <div>
+        <h2 style="text-align: center;">Assignment</h2>
+           <h2 class="slot"> Basic Vaccine Slot
+            Booking</h2>
+    </div>
+
+    <div class="container">
+    <h3 >Name: 
+        <input type="text" id="name">
+    </h3>
+    <h3 >Email: 
+        <input  type="email" id="email">
+    </h3>
+    <h3 >Age: 
+        <input type="number" id="age">
+    </h3>
+    <h3>Phone: 
+        <input type="number" id="phone">
+    </h3>
+    <h3>Adhaar: 
+        <input type="number" id="adhaar">
+    </h3>
+    <h3>Address: 
+        <input type="text" id="address">
+    </h3>
+    <h3>Date: 
+        <input type="date" id="date">
+    </h3>
+    <button type="submit" onclick="saveData()" id="btn">Sumbit</button>
+</div>
+
+    <div class="col-sm-6">
+        <h2 style="text-align: center;">Users Table</h2>
+        <div class="row" style="display: flex; justify: content;">
+            <div style="margin-left: 50px;" ><h3>Name</h3></div>
+            <div style="margin-left: 50px;" ><h3>Email</h3></div>
+            <div style="margin-left: 50px;" ><h3>Age</h3></div>
+            <div style="margin-left: 50px;" ><h3>Phone</h3></div>
+            <div style="margin-left: 50px;" ><h3>Adhaar</h3></div>
+            <div style="margin-left: 50px;" ><h3>Address</h3></div>
+            <div style="margin-left: 50px;" ><h3>Date</h3></div>
+        </div>
+        <div id="showUser">
+            
+        </div>
+    </div>
+
+<script src="userScript.js"></script>
+</body>
+</html>
+
+[index.txt](https://github.com/vijaySah7/Assignment/files/8534095/index.txt)

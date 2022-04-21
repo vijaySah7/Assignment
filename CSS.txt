@@ -1,0 +1,10 @@
+.container{
+    margin-left: 100px;
+    margin-top: 50px;
+  }
+  .slot{
+      text-align: center;
+      color: #106adfbd;
+  }
+  .inp{
+      padding: 10px;
