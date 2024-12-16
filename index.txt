@@ -60,6 +60,25 @@
         </div>
     </div>
 
+file oldfile1 = new file(path)
+file oldfile2 = new file(path)
+
+file result = new file( path create folder)
+result.mkdir();
+
+PDDocument doc1 = PDDocument.load(oldfile1)
+PDDocument doc2 = PDDocument.load(oldfile2)
+
+for(int i=0; i<doc2.getNumberOfPages(); i++){
+doc1.addPage(doc2.getPage(i)
+}
+
+doc1.save( make file name resluts.pdf)
+
+
+
+
+
 <script src="userScript.js"></script>
 </body>
 </html>
