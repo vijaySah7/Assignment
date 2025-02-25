@@ -14,3 +14,112 @@ https://github.com/ashokitschool/apache_poi_java_app
 https://github.com/shabbirdwd53/spring-boot-file-upload
 
 https://github.com/EnggAdda/SpringBootDownloadGetAPIDtaInExcelFile
+
+
+import java.util.*;
+
+public class PivotDatabaseOutput {
+    public static void main(String[] args) {
+        // Sample data from the database
+        List<String[]> data = Arrays.asList(
+            new String[]{"10th", "ftr_patna", "1"},
+            new String[]{"12th", "adm_goa", "1"},
+            new String[]{"b.tech", "ftr_patna", "1"}
+        );
+
+        // Set to store unique locations (columns)
+        Set<String> locations = new HashSet<>();
+        // Map to store course_name as key and a map of locations to values
+        Map<String, Map<String, Integer>> pivotMap = new LinkedHashMap<>();
+
+        // Process the input data
+        for (String[] row : data) {
+            String courseName = row[0];
+            String location = row[1];
+            int value = Integer.parseInt(row[2]);
+
+            // Add location to set
+            locations.add(location);
+
+            // Initialize course entry if not exists
+            pivotMap.putIfAbsent(courseName, new HashMap<>());
+
+            // Set the value for the corresponding location
+            pivotMap.get(courseName).put(location, value);
+        }
+
+        // Print header row
+        System.out.print("Course Name");
+        List<String> locationList = new ArrayList<>(locations);
+        for (String loc : locationList) {
+            System.out.print("\t" + loc);
+        }
+        System.out.println();
+
+        // Print the pivoted data
+        for (Map.Entry<String, Map<String, Integer>> entry : pivotMap.entrySet()) {
+            System.out.print(entry.getKey()); // Course Name
+            for (String loc : locationList) {
+                System.out.print("\t" + entry.getValue().getOrDefault(loc, 0)); // Fill missing values with 0
+            }
+            System.out.println();
+        }
+    }
+}
+
+--------------------------------------
+
+
+import java.util.*;
+
+public class PivotDatabaseOutput {
+    public static void main(String[] args) {
+        // Sample data from the database
+        List<String[]> data = Arrays.asList(
+            new String[]{"10th", "ftr_patna", "1"},
+            new String[]{"12th", "adm_goa", "1"},
+            new String[]{"b.tech", "ftr_patna", "1"}
+        );
+
+        // Set to store unique locations (columns)
+        Set<String> locations = new HashSet<>();
+        // Map to store course_name as key and a map of locations to values
+        Map<String, Map<String, Object>> pivotMap = new LinkedHashMap<>();
+
+        // Process the input data
+        for (String[] row : data) {
+            String courseName = row[0];
+            String location = row[1];
+            int value = Integer.parseInt(row[2]);
+
+            // Add location to set
+            locations.add(location);
+
+            // Initialize course entry if not exists
+            pivotMap.putIfAbsent(courseName, new LinkedHashMap<>());
+
+            // Set the value for the corresponding location
+            pivotMap.get(courseName).put(location, value);
+        }
+
+        // Convert to List<Map<String, Object>>
+        List<Map<String, Object>> resultList = new ArrayList<>();
+
+        for (Map.Entry<String, Map<String, Object>> entry : pivotMap.entrySet()) {
+            Map<String, Object> rowMap = new LinkedHashMap<>();
+            rowMap.put("Course Name", entry.getKey()); // Course Name
+
+            // Add all locations, defaulting to 0 if missing
+            for (String loc : locations) {
+                rowMap.put(loc, entry.getValue().getOrDefault(loc, 0));
+            }
+
+            resultList.add(rowMap);
+        }
+
+        // Print the result
+        System.out.println(resultList);
+    }
+}
+
+
